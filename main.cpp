@@ -11,6 +11,8 @@
   this program aims to help in that regard.
 */
 
+//WARNING: This is going to be really bad code
+
 const char ALPHABET_UPPERCASE[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 const char ALPHABET_LOWERCASE[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
@@ -58,7 +60,7 @@ int main(){
 }
 
 void solveCypher(std::string cypher,int cypherNo){
-  signed int alphabetNo;
+  int alphabetNo;
   char letter;
   bool lowercase = false;
 
@@ -83,7 +85,6 @@ void solveCypher(std::string cypher,int cypherNo){
             alphabetNo = 25;
           }else{
             alphabetNo--;
-            //std::cout << ALPHABET_UPPERCASE[alphabetNo] << std::endl;
           }
         }
         cypher[i] = ALPHABET_UPPERCASE[alphabetNo];
@@ -93,7 +94,6 @@ void solveCypher(std::string cypher,int cypherNo){
             alphabetNo = 25;
             }else{
             alphabetNo--;
-            //std::cout << ALPHABET_UPPERCASE[alphabetNo] << std::endl;
           }
         }
         cypher[i] = ALPHABET_LOWERCASE[alphabetNo];
@@ -106,6 +106,55 @@ void solveCypher(std::string cypher,int cypherNo){
 }
 
 void crackCypher(std::string cypher){
-  //placeholder
-  std::cout << "Cypher cracked" << std::endl;
+
+  int alphabetNo, cypherNo = 1;
+  char letter;
+  bool lowercase = false;
+  std::string auxCypher;
+
+  std::cout << "Returning all possible answers\n" << std::endl;
+
+  for(int l=0;l<26;l++){
+    auxCypher = cypher;
+    for(int i=0;i<auxCypher.size();i++){
+      if(auxCypher[i]!=' '){
+        letter = auxCypher[i];
+
+        for(int j=0;j<=25;j++){
+          if(letter == ALPHABET_LOWERCASE[j]){
+            lowercase = true;
+            alphabetNo = j;
+          }
+        }
+        if(!lowercase){
+          for(int j=0;j<=25;j++){
+            if(letter == ALPHABET_UPPERCASE[j]){
+              alphabetNo = j;
+            }
+          }
+          for(int k = 0;k<cypherNo;k++){
+            if(alphabetNo == 0){
+              alphabetNo = 25;
+            }else{
+              alphabetNo--;
+            }
+          }
+          auxCypher[i] = ALPHABET_UPPERCASE[alphabetNo];
+        }else{
+          for(int k = 0;k<cypherNo;k++){
+            if(alphabetNo == 0){
+              alphabetNo = 25;
+            }else{
+              alphabetNo--;
+            }
+          }
+          auxCypher[i] = ALPHABET_LOWERCASE[alphabetNo];
+        }
+      }
+    }
+    std::cout << auxCypher << std::endl;
+    cypherNo++;
+    lowercase = false;
+  }
+  std::cout << "\nCypher cracked" << std::endl;
 }
