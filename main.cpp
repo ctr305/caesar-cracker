@@ -24,7 +24,6 @@ void crackCypher(std::string cypher);
 int main(){
   std::string cypher;
   char knowCypherNo;
-  bool breakCypherWithoutNumber = false;
   int cypherNo;
 
   std::cout << "Please enter your cyphered string" << std::endl;
