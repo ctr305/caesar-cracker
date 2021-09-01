@@ -60,7 +60,10 @@ void solveCypher(std::string cypher,int cypherNo){
   bool lowercase = false;
 
   for(int i=0;i<cypher.size();i++){
-    if(cypher[i]!=' '){
+    //Special character detectio through ASCII codes
+    if((cypher[i]>=48 && cypher[i]<=57) ||
+       (cypher[i]>=65 && cypher[i]<=90) ||
+       (cypher[i]>=97 && cypher[i]<=122)){
       letter = cypher[i];
 
       for(int j=0;j<=25;j++){
@@ -112,7 +115,9 @@ void crackCypher(std::string cypher){
   for(int l=0;l<26;l++){
     auxCypher = cypher;
     for(int i=0;i<auxCypher.size();i++){
-      if(auxCypher[i]!=' '){
+      if((auxCypher[i]>=48 && auxCypher[i]<=57) ||
+         (auxCypher[i]>=65 && auxCypher[i]<=90) ||
+         (auxCypher[i]>=97 && auxCypher[i]<=122)){
         letter = auxCypher[i];
 
         for(int j=0;j<=25;j++){
