@@ -44,16 +44,11 @@ int main(){
         std::cout << "Please enter a valid cypher number" << std::endl;
         std::cin >> cypherNo;
       }
+      solveCypher(cypher,cypherNo);
       break;
     default:
       std::cout << "Trying to crack the cypher without a cypher number" << std::endl;
-      breakCypherWithoutNumber = true;
-  }
-
-  if(!breakCypherWithoutNumber){
-    solveCypher(cypher,cypherNo);
-  }else{
-    crackCypher(cypher);
+      crackCypher(cypher);
   }
 
   return 0;
