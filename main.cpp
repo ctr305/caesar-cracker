@@ -59,7 +59,7 @@ void solveCypher(std::string cypher,int cypherNo){
   bool lowercase = false;
 
   for(int i=0;i<cypher.size();i++){
-    //Special character detectio through ASCII codes
+    //Special character detection through ASCII codes
     if((cypher[i]>=48 && cypher[i]<=57) ||
        (cypher[i]>=65 && cypher[i]<=90) ||
        (cypher[i]>=97 && cypher[i]<=122)){
